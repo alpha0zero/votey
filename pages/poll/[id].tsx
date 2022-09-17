@@ -1,10 +1,34 @@
-import { useRouter } from "next/router"
+import { prisma } from "../../db/prismaClient"
+import type { Answer } from "@prisma/client"
 
-export default function Mypoll() {
+export default function Mypoll({answers}: {answers: Answer[]}) {
 
-  const router = useRouter()
-  const { id } = router.query
   return (
-    <div>{ id }</div>
+    <div>
+      <code>
+        {
+          JSON.stringify(answers, null, 2)
+        }
+      </code>
+    </div>
   )
+}
+
+export async function getServerSideProps ({params}: {params: {id: string}}) {
+
+  try{
+        const answers = await prisma.answer.findMany({
+            where: {
+                voteId: +params.id
+            }
+        })
+        return {
+          props: {
+            answers
+          }
+        }
+        
+    }catch(err: any) {
+        throw new Error(err)
+    }
 }

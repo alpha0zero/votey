@@ -14,6 +14,7 @@ const Home: NextPage = () => {
           <span className="cursor-pointer">Votey</span>
         </div>
         <section className="h-auto w-2/3 m-auto flex flex-col justify-center">
+          <div className="h-8 m-9"></div>
           <p className="font-extrabold text-5xl text-white my-5 text-center">
             {" "}
             Create your poll <br />{" "}

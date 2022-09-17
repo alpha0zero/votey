@@ -1,5 +1,6 @@
 import axios from "axios";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useState, FormEvent } from "react";
 
 interface Answer {
@@ -10,6 +11,7 @@ interface Answer {
 type Status = "unloaded" | "loading" | "loaded"
 
 const Poll: NextPage = () => {
+  const router = useRouter()
   const [numans, setNumans] = useState<number>(2);
   const [question, setQuestion] = useState<string>("")
   const [answers, setAnswers] = useState({})
@@ -38,7 +40,7 @@ const Poll: NextPage = () => {
 
     setPollStatus("loaded")
     console.log(data)
-    
+    router.push(`/poll/${data.vote.id}`)
   }
 
   return (
