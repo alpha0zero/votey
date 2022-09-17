@@ -19,7 +19,8 @@ model Vote {
 }
 
 model Answer {
-  answer String @unique
+  id     Int    @id @default(autoincrement())
+  answer String
   votes  Int
   Vote   Vote?  @relation(fields: [voteId], references: [id])
   voteId Int?
