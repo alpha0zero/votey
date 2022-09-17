@@ -2,11 +2,8 @@ import axios from "axios";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState, FormEvent } from "react";
+import type { Answer } from "@prisma/client"
 
-interface Answer {
-  answer: string;
-  votes: number
-}
 
 type Status = "unloaded" | "loading" | "loaded"
 

@@ -5,11 +5,13 @@ export default function Mypoll({answers}: {answers: Answer[]}) {
 
   return (
     <div>
-      <code>
-        {
-          JSON.stringify(answers, null, 2)
-        }
-      </code>
+      <pre>
+        <code>
+          {
+            JSON.stringify(answers, null, 2)
+          }
+        </code>
+      </pre>
     </div>
   )
 }
