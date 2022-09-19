@@ -84,7 +84,7 @@ const Poll: NextPage = () => {
                 </label>
             ))}
             <button
-              className="my-2 py-2 px-4 bg-yellow-300 hover:bg-white rounded-lg"
+              className="transition-all shadow shadow-gray-500 my-2 py-2 px-4 bg-yellow-300 hover:shadow-none rounded-lg"
               type="submit"
             >
               {
