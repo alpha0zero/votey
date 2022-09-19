@@ -33,6 +33,6 @@ export async function getServerSideProps ({params}: {params: {id: string}}) {
         }
         
     }catch(err) {
-        throw err
+        console.error(err);
     }
 }
