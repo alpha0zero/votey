@@ -1,10 +1,12 @@
 import { prisma } from "../../db/prismaClient"
 import type { Answer } from "@prisma/client"
+import Nav from "../../components/Nav"
 
 export default function Mypoll({answers}: {answers: Answer[]}) {
 
   return (
     <div>
+      <Nav/>
       <pre>
         <code>
           {
@@ -18,7 +20,7 @@ export default function Mypoll({answers}: {answers: Answer[]}) {
 
 export async function getServerSideProps ({params}: {params: {id: string}}) {
 
-  try{
+    try{
         const answers = await prisma.answer.findMany({
             where: {
                 voteId: +params.id
@@ -30,7 +32,7 @@ export async function getServerSideProps ({params}: {params: {id: string}}) {
           }
         }
         
-    }catch(err: any) {
-        throw new Error(err)
+    }catch(err) {
+        throw err
     }
 }

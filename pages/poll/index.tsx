@@ -3,6 +3,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState, FormEvent } from "react";
 import type { Answer } from "@prisma/client"
+import Nav from "../../components/Nav";
 
 
 type Status = "unloaded" | "loading" | "loaded"
@@ -42,6 +43,7 @@ const Poll: NextPage = () => {
 
   return (
     <div className="h-full flex justify-center items-center">
+      <Nav/>
       <form onSubmit={hundleSubmit} className="flex flex-col border border-slate-600 rounded-3xl sm:w-2/4 sm:h-2/4 p-8 m-8">
         <>
           <label htmlFor="question">
@@ -70,7 +72,7 @@ const Poll: NextPage = () => {
           </label>
           {new Array(numans).fill(1).map((_, i) => (
               <label key={`answer${i + 1}`} htmlFor={`answer${i + 1}`}>
-                <span className="text-xl">{`answer${i + 1}`}</span>
+                <span className="text-xl">{`answer${i + 1}:`}</span>
                 <input
                   className="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 my-2"
                   type="text"
